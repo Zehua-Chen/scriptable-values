@@ -10,14 +10,14 @@ namespace ScriptableValues
 
     public class ScriptableValue<T> : ScriptableValue
     {
-        public T RuntimeValue
+        public T Value
         {
             get
             {
                 if (!_runtimeValueSet)
                 {
                     _runtimeValueSet = true;
-                    _runtimeValue = _designValue;
+                    _runtimeValue = _defaultValue;
                 }
 
                 return _runtimeValue;
@@ -30,13 +30,13 @@ namespace ScriptableValues
         }
 
         [SerializeField]
-        private T _designValue = default;
+        private T _defaultValue = default;
 
         [NonSerialized]
         private T _runtimeValue = default;
         private bool _runtimeValueSet = false;
 
-        private void OnEnable()
+        protected virtual void OnEnable()
         {
             this.Reset();
         }

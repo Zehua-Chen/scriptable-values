@@ -12,7 +12,7 @@ namespace ScriptableValues
 
             ScriptableBool scriptableBool = (ScriptableBool)target;
 
-            GUILayout.Label(string.Format("{0}", scriptableBool.RuntimeValue));
+            GUILayout.Label(string.Format("{0}", scriptableBool.Value));
         }
     }
 }

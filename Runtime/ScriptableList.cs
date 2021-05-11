@@ -11,7 +11,7 @@ namespace ScriptableValues
             {
                 if (_runtimeValue == null)
                 {
-                    _runtimeValue = new List<T>(_designValue);
+                    _runtimeValue = new List<T>(_defaultValue);
                 }
 
                 return _runtimeValue;
@@ -19,7 +19,7 @@ namespace ScriptableValues
         }
 
         [SerializeField]
-        private T[] _designValue;
+        private T[] _defaultValue;
         private List<T> _runtimeValue = null;
 
         protected override void Reset()
