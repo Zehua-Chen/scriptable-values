@@ -1,0 +1,7 @@
+{
+  "name": "com.zehua-chen.scriptable-values",
+  "version": "0.1.0",
+  "displayName": "ScriptableValues",
+  "description": "Values in the form of scriptable objects",
+  "type": "library"
+}

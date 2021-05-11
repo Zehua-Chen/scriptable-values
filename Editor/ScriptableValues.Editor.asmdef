@@ -1,0 +1,18 @@
+{
+    "name": "ScriptableValues.Editor",
+    "rootNamespace": "ScriptableValues.Editor",
+    "references": [
+        "GUID:424d27f61d0f54e83a2e0a0ab18b75fe"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
