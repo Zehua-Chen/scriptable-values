@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace ScriptableValues
@@ -12,6 +13,7 @@ namespace ScriptableValues
     {
         public T Value
         {
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get
             {
                 if (!_runtimeValueSet)
@@ -22,6 +24,8 @@ namespace ScriptableValues
 
                 return _runtimeValue;
             }
+
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
             set
             {
                 _runtimeValueSet = true;
@@ -34,6 +38,8 @@ namespace ScriptableValues
 
         [NonSerialized]
         private T _runtimeValue = default;
+
+        [NonSerialized]
         private bool _runtimeValueSet = false;
 
         protected virtual void OnEnable()

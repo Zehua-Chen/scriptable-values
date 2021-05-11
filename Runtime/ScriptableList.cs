@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace ScriptableValues
@@ -7,6 +9,7 @@ namespace ScriptableValues
     {
         public List<T> RuntimeValue
         {
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get
             {
                 if (_runtimeValue == null)
@@ -16,10 +19,18 @@ namespace ScriptableValues
 
                 return _runtimeValue;
             }
+
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            set
+            {
+                _runtimeValue = value;
+            }
         }
 
         [SerializeField]
         private T[] _defaultValue;
+
+        [NonSerialized]
         private List<T> _runtimeValue = null;
 
         protected override void Reset()
