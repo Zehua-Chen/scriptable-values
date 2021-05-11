@@ -1,10 +1,10 @@
 using UnityEngine;
 using UnityEditor;
 
-namespace ScriptableValues
+namespace ScriptableValues.Editor
 {
     [CustomEditor(typeof(ScriptableBool))]
-    public class ScriptableBoolEditor : Editor
+    public class ScriptableBoolEditor : UnityEditor.Editor
     {
         public override void OnInspectorGUI()
         {
