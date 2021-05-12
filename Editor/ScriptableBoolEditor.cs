@@ -1,18 +1,55 @@
-using UnityEngine;
 using UnityEditor;
+using UnityEngine.UIElements;
+using UnityEditor.UIElements;
 
 namespace ScriptableValues.Editor
 {
     [CustomEditor(typeof(ScriptableBool))]
     public class ScriptableBoolEditor : UnityEditor.Editor
     {
-        public override void OnInspectorGUI()
+        Toggle _runtimeValue;
+
+        private void OnEnable()
         {
-            base.OnInspectorGUI();
+            var boolTarget = (ScriptableBool)target;
 
-            ScriptableBool scriptableBool = (ScriptableBool)target;
+            _runtimeValue = new Toggle("Value");
+            _runtimeValue.RegisterCallback<ChangeEvent<bool>>(e =>
+            {
+                boolTarget.SetValueFromEditor(e.newValue);
+            });
 
-            GUILayout.Label(string.Format("{0}", scriptableBool.Value));
+            
+            boolTarget.Updated += OnUpdate;
+        }
+
+        private void OnDisable()
+        {
+            var boolTarget = (ScriptableBool)target;
+            boolTarget.Updated -= OnUpdate;
+        }
+
+        public override VisualElement CreateInspectorGUI()
+        {
+            var boolTarget = (ScriptableBool)target;
+            var serializedTarget = new SerializedObject(boolTarget);
+
+            var root = new VisualElement();
+
+            var defaultValue = new Toggle("Default Value");
+            root.Add(defaultValue);
+
+            defaultValue.BindProperty(serializedTarget.FindProperty("_defaultValue"));
+
+            _runtimeValue.value = boolTarget.Value;
+            root.Add(_runtimeValue);
+
+            return root;
+        }
+
+        private void OnUpdate(object sender, ScriptableValue<bool>.UpdateEvent e)
+        {
+            _runtimeValue.value = e.NewValue;
         }
     }
 }

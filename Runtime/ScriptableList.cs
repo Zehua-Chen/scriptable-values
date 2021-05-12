@@ -33,7 +33,7 @@ namespace ScriptableValues
         [NonSerialized]
         private List<T> _runtimeValue = null;
 
-        protected override void Reset()
+        public override void Reset()
         {
             base.Reset();
             _runtimeValue = null;
