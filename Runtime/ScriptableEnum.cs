@@ -1,6 +1,7 @@
 #nullable enable
 
 using System;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace ScriptableValues
@@ -23,17 +24,20 @@ namespace ScriptableValues
             return false;
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public bool Equals(ScriptableEnum other)
         {
             return GetInstanceID() == other.GetInstanceID();
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool operator==(ScriptableEnum lhs, ScriptableEnum rhs)
         {
             Debug.Log("== called");
             return lhs.GetInstanceID() == rhs.GetInstanceID();
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool operator !=(ScriptableEnum lhs, ScriptableEnum rhs)
         {
             return lhs.GetInstanceID() != rhs.GetInstanceID();
