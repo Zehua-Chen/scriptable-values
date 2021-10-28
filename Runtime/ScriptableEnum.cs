@@ -33,7 +33,6 @@ namespace ScriptableValues
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool operator==(ScriptableEnum lhs, ScriptableEnum rhs)
         {
-            Debug.Log("== called");
             return lhs.GetInstanceID() == rhs.GetInstanceID();
         }
 
